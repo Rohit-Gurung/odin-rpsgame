@@ -1,6 +1,3 @@
-// Initializing the Scores
-let computerScore = 0;
-let playerScore = 0;
 // Choice selector for Computer
 function computerPlay() {
   let choicesArray = ["rock", "paper", "scissors"];
@@ -29,29 +26,40 @@ if (
   playerSelection;
 } else {
   alert("Invalid!!!");
-  playerSelection = null;
+  delete playerSelection;
 }
-// Rock Paper Scissors single round and logic function
+// Initializing the Scores
+let computerScore = 0;
+let playerScore = 0;
+// game logic and score incrementor
+let result = "";
 function playRound(playerSelection, computerSelection) {
-  let result = "";
   if (
     (playerSelection === "rock" && computerSelection === "paper") ||
     (playerSelection === "paper" && computerSelection === "scissors") ||
     (playerSelection === "scissors" && computerSelection === "rock")
   ) {
     computerScore++;
-    result = `Player : ${playerSelection}\nComputer : ${computerSelection}\nComputer Wins`;
+    return (result = `Player : ${playerSelection}\nComputer : ${computerSelection}\nComputer Wins`);
   } else if (playerSelection === computerSelection) {
-    result = `Player : ${playerSelection}\nComputer : ${computerSelection}\nIt's a tie`;
-  } else {
-    playerChoice++;
-    `Player : ${playerSelection}\nComputer : ${computerSelection}\nPlayer Wins`;
+    return (result = `Player : ${playerSelection}\nComputer : ${computerSelection}\nIt's a tie`);
   }
+  playerScore++;
+  return (result = `Player : ${playerSelection}\nComputer : ${computerSelection}\nPlayer Wins`);
 }
-// game
+
 function game() {
-  for (let i = 0; i <= 5; i++) {
-    return playRound(playerSelection, computerSelection);
-  }
+  playRound(playerSelection, computerSelection);
 }
 game();
+game();
+game();
+game();
+game();
+console.log(result);
+console.log(result);
+console.log(result);
+console.log(result);
+console.log(result);
+console.log(computerScore);
+console.log(playerScore);
