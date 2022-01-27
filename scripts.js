@@ -1,8 +1,10 @@
+// Initializing the Scores
+let computerScore = 0;
+let playerScore = 0;
+// Choice selector for Computer
 function computerPlay() {
   let choicesArray = ["rock", "paper", "scissors"];
   let computerChoice = Math.floor(Math.random() * choicesArray.length);
-  console.log(computerChoice);
-  console.log(choicesArray[computerChoice]);
   if (computerChoice === 1) {
     return choicesArray[computerChoice];
   } else if (computerChoice === 2) {
@@ -10,8 +12,8 @@ function computerPlay() {
   }
   return choicesArray[computerChoice];
 }
-
 let computerSelection = computerPlay();
+// Playerselection prompt
 let playerChoice = prompt("Enter Rock Paper or Scissors", "");
 
 if (playerChoice) {
@@ -27,19 +29,29 @@ if (
   playerSelection;
 } else {
   alert("Invalid!!!");
-  delete playerSelection;
+  playerSelection = null;
 }
-
+// Rock Paper Scissors single round and logic function
 function playRound(playerSelection, computerSelection) {
-  let results =
-    playerSelection === computerSelection
-      ? `Player : ${playerSelection}\nComputer : ${computerSelection}\nIts a tie`
-      : playerSelection === "rock" && computerSelection === "paper"
-      ? `Player : ${playerSelection}\nComputer : ${computerSelection}\nComputer Wins`
-      : playerSelection === "paper" && computerSelection === "scissors"
-      ? `Player : ${playerSelection}\nComputer : ${computerSelection}\nComputer Wins`
-      : playerSelection === "scissors" && computerSelection === "rock"
-      ? `Player : ${playerSelection}\nComputer : ${computerSelection}\nComputer Wins`
-      : `Player : ${playerSelection}\nComputer : ${computerSelection}\nPlayer Wins`;
-  alert(results);
+  let result = "";
+  if (
+    (playerSelection === "rock" && computerSelection === "paper") ||
+    (playerSelection === "paper" && computerSelection === "scissors") ||
+    (playerSelection === "scissors" && computerSelection === "rock")
+  ) {
+    computerScore++;
+    result = `Player : ${playerSelection}\nComputer : ${computerSelection}\nComputer Wins`;
+  } else if (playerSelection === computerSelection) {
+    result = `Player : ${playerSelection}\nComputer : ${computerSelection}\nIt's a tie`;
+  } else {
+    playerChoice++;
+    `Player : ${playerSelection}\nComputer : ${computerSelection}\nPlayer Wins`;
+  }
 }
+// game
+function game() {
+  for (let i = 0; i <= 5; i++) {
+    return playRound(playerSelection, computerSelection);
+  }
+}
+game();
